@@ -17,6 +17,8 @@ struct file_descriptor {
 	off_t	pos;
 };
 ```
-
-
+\
+references:-
+\
+[fd_ops](/file%20descriptors/fd_h/fd_ops.md) structure.
 
