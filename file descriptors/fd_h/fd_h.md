@@ -21,4 +21,6 @@ struct file_descriptor {
 references:-
 \
 [fd_ops](/file%20descriptors/fd_h/fd_ops.md) structure.
+\
+[vnode](/fs/fs_h.md) structure.
 
