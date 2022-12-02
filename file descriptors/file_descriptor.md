@@ -9,4 +9,4 @@ that uniquely represents an opened file for the process. If your process
 opens 10 files then your Process table will have 10 entries for file descriptors.
 
 \
-[file_descriptor](/blob/main/file%20descriptors/fd_h)
+[file_descriptor](file descriptors/fd_h.md)
