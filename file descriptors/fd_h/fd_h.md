@@ -23,4 +23,6 @@ references:-
 [fd_ops](/file%20descriptors/fd_h/fd_ops.md) structure.
 \
 [vnode](/fs/fs_h.md) structure.
+\
+[fs_mount](/fs/fs_mount.md) structure.
 
