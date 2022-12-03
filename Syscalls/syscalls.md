@@ -27,4 +27,4 @@ In haiku os the syscalls API is based on translation.
 \
 that is :- user_syscallName -> _kern_syscallName.
 
-[_kern_open](/Syscalls/_kern_open.md) syscall.
+[_kern_open](/Syscalls/kern/_kern_open.md) syscall.
