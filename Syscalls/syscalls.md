@@ -20,3 +20,4 @@ If the request is permitted, the kernel performs the requested action, like crea
 A simple system call may take few nanoseconds to provide the result, like retrieving the system date and time. A more complicated system call, such as connecting to a network device, may take a few seconds. Most operating systems launch a distinct kernel thread for each system call to avoid bottlenecks. Modern operating systems are multi-threaded, which means they can handle various system calls at the same time.
 \
 ![Alt Architecture](/Syscalls/syscalls_workflow.webp)
+\
