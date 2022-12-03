@@ -25,4 +25,6 @@ references:-
 [vnode](/fs/fs_h.md) structure.
 \
 [fs_mount](/fs/fs_mount.md) structure.
+\
+[net_socket](/socket/net_socket.md) structure.
 
