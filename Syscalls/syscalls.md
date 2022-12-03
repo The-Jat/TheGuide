@@ -25,4 +25,6 @@ A simple system call may take few nanoseconds to provide the result, like retrie
 #### Haiku OS.
 In haiku os the syscalls API is based on translation.
 \
-that is :- _kern_syscallName -> _user_syscallName.
+that is :- user_syscallName -> _kern_syscallName.
+
+[_kern_open](/Syscalls/_kern_open.md) syscall.
