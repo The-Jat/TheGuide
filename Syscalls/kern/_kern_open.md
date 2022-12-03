@@ -2,7 +2,7 @@
 
 >Location = src/system/kernel/fs/vfs.cpp
 
-'''c++
+```c++
 
 /*!	\brief Opens a node specified by a FD + path pair.
 
@@ -32,7 +32,7 @@ _kern_open(int fd, const char* path, int openMode, int perms)
 }
 
 
-'''
+```
 
 [_file_create](/kernel/fs/file_create.md) syscall.
 

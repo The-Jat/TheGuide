@@ -1,6 +1,6 @@
 
 >Location = src/system/kernel/fs/vfs.cpp
-'''c++
+```c++
 
 static int
 file_create(int fd, char* path, int openMode, int perms, bool kernel)
@@ -22,4 +22,4 @@ file_create(int fd, char* path, int openMode, int perms, bool kernel)
 	return status;
 }
 
-'''
+```
