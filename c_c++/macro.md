@@ -58,6 +58,13 @@ int main()
 ## function-like macros
 Function-like macros work the same as the function call.
 It is used to replace the entire code instead of the function name.
+Function-like macros can take arguments, just like true functions. To define a macro that uses arguments, you insert parameters between the pair of parentheses in the macro definition that make the macro function-like.
+```c++
+#define min(X, Y)  ((X) < (Y) ? (X) : (Y))
+  x = min(a, b);          →  x = ((a) < (b) ? (a) : (b));
+  y = min(1, 2);          →  y = ((1) < (2) ? (1) : (2));
+  z = min(a + 28, *p);    →  z = ((a + 28) < (*p) ? (a + 28) : (*p));
+```
 
 ```c++
 
