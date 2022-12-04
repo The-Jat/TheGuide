@@ -12,7 +12,7 @@
 | Sizeof operator will generate 0  for an empty structure.  | Sizeof operator will generate 1 for an empty structure.  |
 | Data Hiding is not possible.  | Data Hiding is possible.  |
 
-
+---
 **1. Member functions ( function inside the structure):**
 In C: NO
 We can not create a function using the structure. If you will try to implement the function in C structures, you will get the compiler error.
