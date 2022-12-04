@@ -83,6 +83,9 @@ int main() {
 }
 
 ```
+> Stringizing
+Sometimes you may want to convert a macro argument into a string constant. Parameters are not replaced inside string constants, but you can use the ‘#’ preprocessing operator instead.
+When a macro parameter is used with a leading ‘#’, the preprocessor replaces it with the literal text of the actual argument, converted to a string constant. Unlike normal parameter replacement, the argument is not macro-expanded first. This is called stringizing.
 
 ## multi-line macros
 An object-line macro may be of multiple lines.
