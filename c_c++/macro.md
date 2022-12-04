@@ -91,13 +91,40 @@ The operator # is known as Stringize Operator in C language, it is used in conju
 Stringize Operator (#) is used to turn the argument into quoted string.
 
 > Defining Macro with Stringize Operator
-\
+
 #define macro_function(argument)    #argument
+
+* This will convert whatever is passed as a parameter argument into a string.
+* This will delete Leading and trailing white space.
+* If we pass the macro, it won’t expand. It will print the string.
+* Some characters cannot be stringized – notably, the comma , because it is used to delimit parameters and the right parenthesis ) because it marks the end of the parameter list.
 
 
 > Stringizing
 Sometimes you may want to convert a macro argument into a string constant. Parameters are not replaced inside string constants, but you can use the ‘#’ preprocessing operator instead.
 When a macro parameter is used with a leading ‘#’, the preprocessor replaces it with the literal text of the actual argument, converted to a string constant. Unlike normal parameter replacement, the argument is not macro-expanded first. This is called stringizing.
+
+>Token Pasting Operator (##) in C
+
+The token pasting operator ## defined by ANSI enables us to combine two tokens within a macro definition to form a single token.
+In another word, The token pasting (##) operator simply eliminates any white space around it and concatenates (joins together) the non-whitespace characters together. It is used to create new tokens.
+
+Limitations
+* It can only be used in a macro definition.
+* It may not be the first or last characters in the replacement text.
+* We can only use this method for valid tokens only.
+'''c++
+#include <stdio.h>
+#define CONCAT(A,B) A##B
+int main()
+{
+  printf("value1: %d\n",CONCAT(12,20));
+  printf("value2: %d\n",CONCAT(12,20)+10);  
+  return 0;
+}
+output-> value1: 1220
+        value2: 1230
+'''
 
 ## multi-line macros
 An object-line macro may be of multiple lines.
