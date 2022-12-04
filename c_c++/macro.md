@@ -83,6 +83,18 @@ int main() {
 }
 
 ```
+
+>Stringizing Operator (#) in C/C++
+
+The operator # is known as Stringize Operator in C language, it is used in conjunction with #define directive.
+\
+Stringize Operator (#) is used to turn the argument into quoted string.
+
+> Defining Macro with Stringize Operator
+\
+#define macro_function(argument)    #argument
+
+
 > Stringizing
 Sometimes you may want to convert a macro argument into a string constant. Parameters are not replaced inside string constants, but you can use the ‘#’ preprocessing operator instead.
 When a macro parameter is used with a leading ‘#’, the preprocessor replaces it with the literal text of the actual argument, converted to a string constant. Unlike normal parameter replacement, the argument is not macro-expanded first. This is called stringizing.
