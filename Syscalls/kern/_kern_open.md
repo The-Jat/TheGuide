@@ -35,5 +35,6 @@ _kern_open(int fd, const char* path, int openMode, int perms)
 ```
 
 [_file_create](/kernel/fs/file_create.md) syscall.
+\
 [_file_open](/kernel/fs/file_open.md) call.
 
