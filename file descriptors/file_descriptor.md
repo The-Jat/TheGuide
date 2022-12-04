@@ -1,5 +1,7 @@
 ### What is file descriptor ?.
 A file descriptor is an unsigned integer used by a process to identify an open file.
+It is non negative integer.
+It points to the entry in the file decriptor table.
 \
 Every process has a file descriptor table in their process control block(PCB) which tells
 \
