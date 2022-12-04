@@ -118,7 +118,8 @@ output -> This will be the string
 >2. Token Pasting Operator (##)
 
 The token pasting operator ## defined by ANSI enables us to combine two tokens within a macro definition to form a single token.
-In another word, The token pasting (##) operator simply eliminates any white space around it and concatenates (joins together) the non-whitespace characters together. It is used to create new tokens.
+In another word, The token pasting (##) operator simply eliminates any white space around it and concatenates (joins together) the non-whitespace characters together. It is used to create new tokens.\
+During macro expansion parameter next to ## is combined with the parameter before ## and returned as a single token.
 
 Limitations
 * It can only be used in a macro definition.
