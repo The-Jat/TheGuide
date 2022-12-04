@@ -113,7 +113,8 @@ Limitations
 * It can only be used in a macro definition.
 * It may not be the first or last characters in the replacement text.
 * We can only use this method for valid tokens only.
-'''c++
+
+```c++
 #include <stdio.h>
 #define CONCAT(A,B) A##B
 int main()
@@ -124,7 +125,7 @@ int main()
 }
 output-> value1: 1220
         value2: 1230
-'''
+```
 
 ## multi-line macros
 An object-line macro may be of multiple lines.
