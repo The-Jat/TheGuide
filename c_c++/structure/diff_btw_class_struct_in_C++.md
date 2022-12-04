@@ -50,7 +50,7 @@ Here is the main difference between Structure and Class in C++:
 | Structure is a user-defined data type that combines logically related data items of different data types like char, float, int, etc., together. | Class is a blueprint or a set of instructions to build a specific type of object. |
 |Structure can be declared using the struct keyword.|It can be declared using the class keyword.|
 |It is a value type data type.|It is a reference type data type.|
-|You cannot inherit it from other structures or classes.|You can inherit it from other structures or classes.|
+|You can inherit it from other structures or classes.|You can inherit it from other structures or classes.|
 |It can instantiate objects without using a new keyword.|It can instantiate an object using a new keyword.|
 |You cannot change the default constructor of structure.|You can change class default constructor.|
 |Structure cannot have a destructor.|Class can have a destructor.|
