@@ -83,14 +83,15 @@ int main() {
 }
 
 ```
+
 ---
->1. Stringizing Operator (#) in C/C++
+>1. Stringizing Operator (#)
 
-The operator # is known as Stringize Operator in C language, it is used in conjunction with #define directive.
+The operator # is known as Stringize Operator in C C++ language, it is used in conjunction with #define directive.
 \
-Stringize Operator (#) is used to turn the argument into quoted string.
+Stringize Operator (#) is used to turn the argument into quoted string. It transforms the macro parameter to string. It causes the macro parameter to enclose in double quoted string.
 
-> Defining Macro with Stringize Operator
+Syntax : -
 
 #define macro_function(argument)    #argument
 
@@ -98,14 +99,23 @@ Stringize Operator (#) is used to turn the argument into quoted string.
 * This will delete Leading and trailing white space.
 * If we pass the macro, it won’t expand. It will print the string.
 * Some characters cannot be stringized – notably, the comma , because it is used to delimit parameters and the right parenthesis ) because it marks the end of the parameter list.
+```c++
+#include <stdio.h>
 
+// Macro definition with stringize operator
+#define PRINT(msg) #msg
 
-> Stringizing
-Sometimes you may want to convert a macro argument into a string constant. Parameters are not replaced inside string constants, but you can use the ‘#’ preprocessing operator instead.
-When a macro parameter is used with a leading ‘#’, the preprocessor replaces it with the literal text of the actual argument, converted to a string constant. Unlike normal parameter replacement, the argument is not macro-expanded first. This is called stringizing.
+int main()
+{
+	printf(PRINT(This will be the string));
+	
+	return 0;
+}
+output -> This will be the string
+```
 
 ---
->2. Token Pasting Operator (##) in C
+>2. Token Pasting Operator (##)
 
 The token pasting operator ## defined by ANSI enables us to combine two tokens within a macro definition to form a single token.
 In another word, The token pasting (##) operator simply eliminates any white space around it and concatenates (joins together) the non-whitespace characters together. It is used to create new tokens.
