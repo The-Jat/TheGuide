@@ -88,6 +88,7 @@ struct B : A
 * public
 * private
 * protected
+
 Note that the default inheritance is the same as the default visibility of members: public if you use the struct keyword, and private for the class keyword.
 
 It's even possible to have a class derive from a struct (or vice versa). In this case, the default inheritance is controlled by the child, so a struct that derives from a class will default to public inheritance, and a class that derives from a struct will have private inheritance by default.
@@ -143,12 +144,35 @@ b.p1 = 1; //ill formed, p1 is protected
 b.p2 = 1; //ill formed, p2 is protected
 b.p3 = 1; //ill formed, p3 is inaccessible
 ```
-Note that although protected inheritance is allowed, the actual use of it is rare. One instance of how protected inheritance is used in application is in partial base class specialization (usually referred to as "controlled polymorphism").
 
-When OOP was relatively new, (public) inheritance was frequently said to model an "IS-A" relationship. That is, public inheritance is correct only if an instance of the derived class is also an instance of the base class.
+class Base {
+  public:
+    int x;
+  protected:
+    int y;
+  private:
+    int z;
+};
 
-This was later refined into the Liskov Substitution Principle: public inheritance should only be used when/if an instance of the derived class can be substituted for an instance of the base class under any possible circumstance (and still make sense).
 
-Private inheritance is typically said to embody a completely different relationship: "is implemented in terms of" (sometimes called a "HAS-A" relationship). For example, a Stack class could inherit privately from a Vector class. Private inheritance bears a much greater similarity to aggregation than to public inheritance.
+> example
 
-Protected inheritance is almost never used, and there's no general agreement on what sort of relationship it embodies.
+```
+class PublicDerived: public Base {
+  // x is public
+  // y is protected
+  // z is not accessible from PublicDerived
+};
+
+class ProtectedDerived: protected Base {
+  // x is protected
+  // y is protected
+  // z is not accessible from ProtectedDerived
+};
+
+class PrivateDerived: private Base {
+  // x is private
+  // y is private
+  // z is not accessible from PrivateDerived
+};
+```
