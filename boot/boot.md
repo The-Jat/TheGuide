@@ -11,4 +11,5 @@ main(stage2_args *args)
 	...
 }
 ```
+* heap_init(args)
 
