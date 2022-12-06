@@ -9,3 +9,5 @@ typedef struct stage2_args {
 	struct platform_stage2_args	platform;
 } stage2_args ;
 ```
+
+* [platform_stage2_args](/boot/structure/platform_stage2_args.md) structure.
