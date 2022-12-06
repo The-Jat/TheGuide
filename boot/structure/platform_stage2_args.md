@@ -1,4 +1,4 @@
-### platform_stage2_args structure.
+> platform_stage2_args structure.
 
 location (dependent on architecture)
 * for efi based = headers/private/kernel/boot/platform/efi/platform_stage2_args.h
