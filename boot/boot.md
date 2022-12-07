@@ -9,8 +9,54 @@
 
 efi_main(efi_handle image, [efi_system_table](/boot/efi_table.md) *systemTable)
 
+It does the following things : -
+* console_init() =
+* serial_init() =
+* serial_enable() =
+* console_check_boot_keys();
+* cpu_init();
+* acpi_init();
+* #ifdef _BOOT_FDT_SUPPORT
+	dtb_init();
+* timer_init();
+* smp_init();
+* main(&args);
+
 ```
 efi_main(efi_handle image, efi_system_table *systemTable)
+{
+	stage2_args args;
+
+	memset(&args, 0, sizeof(stage2_args));
+
+	kImage = image;
+	kSystemTable = systemTable;
+	kBootServices = systemTable->BootServices;
+	kRuntimeServices = systemTable->RuntimeServices;
+
+	call_ctors();
+
+	console_init();
+	serial_init();
+	serial_enable();
+
+	sBootOptions = console_check_boot_keys();
+
+	// disable apm in case we ever load a 32-bit kernel...
+	gKernelArgs.platform_args.apm.version = 0;
+
+	cpu_init();
+	acpi_init();
+#ifdef _BOOT_FDT_SUPPORT
+	dtb_init();
+#endif
+	timer_init();
+	smp_init();
+
+	main(&args);
+
+	return EFI_SUCCESS;
+}
 
 ```
 
