@@ -7,7 +7,7 @@
 
 * control comes to efi_main function.
 
-efi_main(efi_handle image, [efi_system_table] *systemTable)
+efi_main(efi_handle image, [efi_system_table](/boot/efi_table.md) *systemTable)
 
 ```
 efi_main(efi_handle image, efi_system_table *systemTable)
