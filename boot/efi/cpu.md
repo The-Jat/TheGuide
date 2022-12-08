@@ -16,3 +16,4 @@ cpu_init()
 }
 
 ```
+* boot_arch_cpu_init()
