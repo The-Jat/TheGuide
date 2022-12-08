@@ -15,7 +15,7 @@ It does the following things : -
 * [serial_enable()](/boot/efi/serial.md#serial_enable) =
 * [console_check_boot_keys()](/boot/efi/console.md#console_check_boot_keys) =
 * [cpu_init()](/boot/efi/cpu.md#cpu_init) = 
-* [acpi_init()](/boot/efi/acpi.md) =
+* [acpi_init()](/boot/efi/acpi.md#acpi_init) =
 * #ifdef _BOOT_FDT_SUPPORT
 	dtb_init();
 * timer_init();
