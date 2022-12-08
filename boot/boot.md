@@ -13,7 +13,7 @@ It does the following things : -
 * [console_init()](/boot/efi/console.md) =
 * [serial_init()](/boot/efi/serial.md) =
 * [serial_enable()](/boot/efi/serial.md#serial_enable) =
-* [console_check_boot_keys()](/boot/efi/console.md#console_check_boot_key()) =
+* [console_check_boot_keys()](/boot/efi/console.md##console_check_boot_key()) =
 * cpu_init();
 * acpi_init();
 * #ifdef _BOOT_FDT_SUPPORT
