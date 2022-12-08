@@ -16,4 +16,4 @@ cpu_init()
 }
 
 ```
-* boot_arch_cpu_init()
+* [boot_arch_cpu_init()](/boot/arch/arch_cpu.md#boot_arch_cpu_init)
