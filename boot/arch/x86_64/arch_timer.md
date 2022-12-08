@@ -15,3 +15,4 @@ arch_timer_init(void)
 ```
 
 * [calculate_cpu_conversion_factor()](/boot/arch/x86/arch_cpu.md#calculate_cpu_conversion_factor)
+* [hpet_init()](/boot/arch/x86/arch_hpet.md#hpet_init)
