@@ -30,3 +30,31 @@ console_init(void)
 }
 
 ```
+
+## console_check_boot_keys()
+```
+
+uint32
+console_check_boot_keys(void)
+{
+	efi_input_key key;
+
+	for (int i = 0; i < 3; i++) {
+		// give the user a chance to press a key
+		kBootServices->Stall(100000);
+
+		efi_status status = kSystemTable->ConIn->ReadKeyStroke(
+			kSystemTable->ConIn, &key);
+
+		if (status != EFI_SUCCESS)
+			continue;
+
+		if (key.UnicodeChar == 0 && key.ScanCode == SCAN_ESC)
+			return BOOT_OPTION_DEBUG_OUTPUT;
+		if (key.UnicodeChar == ' ')
+			return BOOT_OPTION_MENU;
+	}
+	return 0;
+}
+
+```
