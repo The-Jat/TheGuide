@@ -27,3 +27,12 @@ serial_init(void)
 }
 
 ```
+
+
+## serial_enable
+
+extern "C" void
+serial_enable(void)
+{
+	sSerialEnabled = true;
+}
