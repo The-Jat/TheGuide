@@ -20,4 +20,4 @@ smp_init(void)
 
 ```
 
-* [arch_smp_init()](/boot/arch/x86/arch_smp#arch_smp_init)
+* [arch_smp_init()](/boot/arch/x86/arch_smp.md#arch_smp_init)
