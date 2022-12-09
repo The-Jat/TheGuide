@@ -19,7 +19,7 @@ It does the following things : -
 * #ifdef _BOOT_FDT_SUPPORT
 	dtb_init();
 * [timer_init()](/boot/efi/timer.md#timer_init) =
-* smp_init();
+* [smp_init()](/boot/efi/smp.md#smp_init) =
 * main(&args);
 
 ```
