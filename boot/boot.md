@@ -18,7 +18,7 @@ It does the following things : -
 * [acpi_init()](/boot/efi/acpi.md#acpi_init) =
 * #ifdef _BOOT_FDT_SUPPORT
 	dtb_init();
-* timer_init();
+* [timer_init()](/boot/efi/timer.md#timer_init) =
 * smp_init();
 * main(&args);
 
