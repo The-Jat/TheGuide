@@ -33,6 +33,6 @@ heap_init(stage2_args* args)
 }
 
 
-``
+```
 
 * [platform_init_heap(args, &base, &top)]()
