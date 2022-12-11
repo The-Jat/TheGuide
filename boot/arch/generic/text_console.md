@@ -2,8 +2,8 @@
 ## text_console
 
 
-// This is set by the boot platform during console_init().
-ConsoleNode* gConsoleNode;
+
+ConsoleNode* gConsoleNode;	// This is set by the boot platform during console_init().
 
 
 ## console_hide_cursor
