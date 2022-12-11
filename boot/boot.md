@@ -74,5 +74,5 @@ main(stage2_args *args)
 	...
 }
 ```
-* heap_init(args)
+* [main(args)](/boot/loader/main.md#main)
 
