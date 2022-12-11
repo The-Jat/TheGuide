@@ -31,6 +31,7 @@ console_init(void)
 
 ```
 * #if 1 is executed always because, 1 means true so the expressin becomes true.
+* [update_screen_size()](/boot/efi/console.md#update_screen_size)
 
 
 ## console_check_boot_keys()
@@ -59,4 +60,27 @@ console_check_boot_keys(void)
 	return 0;
 }
 
+```
+
+## update_screen_size()
+
+```
+static void update_screen_size(void)
+{
+	size_t width, height;
+	size_t area = 0;
+	efi_simple_text_output_protocol *ConOut = kSystemTable->ConOut;
+
+	for (int mode = 0; mode < ConOut->Mode->MaxMode; ++mode) {
+		if (ConOut->QueryMode(ConOut, mode, &width, &height) == EFI_SUCCESS) {
+			if (width * height > area) {
+				sConsole.fScreenWidth = width;
+				sConsole.fScreenHeight = height;
+				sScreenMode = mode;
+			}
+		}
+	}
+
+	ConOut->SetMode(ConOut, sScreenMode);
+}
 ```
