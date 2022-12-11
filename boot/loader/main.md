@@ -149,3 +149,5 @@ out:
 Footer
 
 ```
+
+* [heap_init]()
