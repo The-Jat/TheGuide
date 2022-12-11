@@ -30,7 +30,8 @@ console_init(void)
 }
 
 ```
-* # 1 is executed always because, 1 means true so the expressin becomes true.
+* #if 1 is executed always because, 1 means true so the expressin becomes true.
+
 
 ## console_check_boot_keys()
 ```
