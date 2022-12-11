@@ -16,8 +16,11 @@ It does the following things : -
 * [console_check_boot_keys()](/boot/efi/console.md#console_check_boot_keys) =
 * [cpu_init()](/boot/efi/cpu.md#cpu_init) = 
 * [acpi_init()](/boot/efi/acpi.md#acpi_init) =
-* #ifdef _BOOT_FDT_SUPPORT
-	dtb_init();
+* 	#ifdef _BOOT_FDT_SUPPORT
+
+[dtb_init()](/boot/efi/dtb.md#dtb_init)
+
+#endif
 * [timer_init()](/boot/efi/timer.md#timer_init) =
 * [smp_init()](/boot/efi/smp.md#smp_init) =
 * main(&args);
