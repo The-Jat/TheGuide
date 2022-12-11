@@ -152,3 +152,6 @@ Footer
 
 * [heap_init]()
 * [add_stage2_driver_settings(args)](/boot/loader/load_driver_settings.md#add_stage2_driver_settings)
+* [platform_init_video]()
+
+
