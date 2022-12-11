@@ -32,6 +32,7 @@ console_init(void)
 ```
 * #if 1 is executed always because, 1 means true so the expressin becomes true.
 * [update_screen_size()](/boot/efi/console.md#update_screen_size)
+* [console_hide_cursor()](/boot/arch/generic/text_console.md#console_hide_cursor)
 
 
 ## console_check_boot_keys()
