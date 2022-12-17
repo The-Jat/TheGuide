@@ -27,9 +27,20 @@ BIOS have the following limitations, such as:
 * The BIOS must run in 16-bit processor mode and only has 1 MB of space to execute in. It has trouble initializing multiple hardware devices at once, which leads to a slower boot process when initializing all the hardware interfaces and devices on a modern PC.
 * It cannot initialize multiple hardware devices at once, thus leading to a slow booting process.
 
+---
+
 ### UEFI entry point
+*  This routine is the entry point for the EFI Boot Application.
 
 ```
+/*
+Arguments:
+    ImageHandle - Supplies a pointer to the image handle.
+    SystemTable - Supplies a pointer to the EFI system table.
+Return Value:
+    EFI status code.
+*/
+
 EFI_STATUS
 efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable){
 
