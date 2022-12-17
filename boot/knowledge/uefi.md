@@ -48,3 +48,21 @@ efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable){
 
 }
 ```
+
+### Clear the screen
+
+This will clear the complete screen.
+
+```
+SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+
+```
+
+### Output to screen
+
+This will print the string to the screen.
+
+```
+SystemTable->ConOut->ClearScreen(SystemTable->ConOut, (char16_t*)L"Welcome to Boot Manager\r\n");
+
+```
