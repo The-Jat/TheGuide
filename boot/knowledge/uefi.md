@@ -66,3 +66,4 @@ This will print the string to the screen.
 SystemTable->ConOut->ClearScreen(SystemTable->ConOut, (char16_t*)L"Welcome to Boot Manager\r\n");
 
 ```
+* The L"" signifies that the string is composed from CHAR16 symbols, as was required in spec.
