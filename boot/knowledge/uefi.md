@@ -67,3 +67,24 @@ SystemTable->ConOut->ClearScreen(SystemTable->ConOut, (char16_t*)L"Welcome to Bo
 
 ```
 * The L"" signifies that the string is composed from CHAR16 symbols, as was required in spec.
+
+### Read key stroke
+
+```
+while(TRUE) {
+    gBS->WaitForEvent(1, &(gST->ConIn->WaitForKey), &Index);
+    gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+    Print(L"ScanCode = %04x, UnicodeChar = %04x (%c)\n", Key.ScanCode, Key.UnicodeChar, Key.UnicodeChar);
+
+    if (Key.UnicodeChar == 'k') {
+      Print(L"Correct!\n");
+      break;
+    } else if (Key.UnicodeChar == 'q') {
+      Print(L"Bye!\n");
+      break;
+    } else {
+      Print(L"Wrong!\n");
+    }
+  }
+  gST->ConIn->Reset(gST->ConIn, FALSE);
+```
