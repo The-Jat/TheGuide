@@ -17,6 +17,10 @@ vfs_init(stage2_args *args)
 
 ## get_boot_file_system
 
+* arg1 = stage2_args*
+* arg2 = BootVolume&
+
+
 ```
 
 /*! Gets the boot device, scans all of its partitions, gets the
