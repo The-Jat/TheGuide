@@ -16,7 +16,7 @@ vfs_init(stage2_args *args)
 ```
 
 
-## BootVolume {constructor}
+## BootVolume()
 
 ```
 BootVolume::BootVolume()
