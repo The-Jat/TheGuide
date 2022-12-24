@@ -12,7 +12,7 @@ This function returns the base and top of the memory to be used for allocation.
 
 Heap just the random memory.
 
-
+platform_init_heap returns the base and top of the stack by reference.
 
 ```
 extern "C" status_t
