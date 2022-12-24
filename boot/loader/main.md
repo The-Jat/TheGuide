@@ -155,5 +155,6 @@ Footer
 * [platform_init_video()](/boot/efi/video.md#platform_init_video)
 * [vfs_init()](/boot/loader/vfs.md#vfs_init)
 * [BootVolume()](/boot/loader/vfs.md#BootVolume)
+* [PathBlocklist()](/boot/loader/PathBlocklist.md#PathBlocklist)
 
 
