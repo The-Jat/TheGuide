@@ -156,5 +156,6 @@ Footer
 * [vfs_init()](/boot/loader/vfs.md#vfs_init)
 * [BootVolume()](/boot/loader/vfs.md#BootVolume)
 * [PathBlocklist()](/boot/loader/PathBlocklist.md#PathBlocklist)
+* [get_boot_file_system(args, bootVolume)](/boot/loader/vfs.md#get_boot_file_system)
 
 
