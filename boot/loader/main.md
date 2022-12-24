@@ -159,3 +159,5 @@ Footer
 * [get_boot_file_system(args, bootVolume)](/boot/loader/vfs.md#get_boot_file_system)
 
 
+* [load_driver_settings(args, bootVolume.RootDirectory())](/boot/loader/load_driver_settings.md#load_driver_settings)
+
