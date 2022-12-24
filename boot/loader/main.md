@@ -150,9 +150,10 @@ Footer
 
 ```
 
-* [heap_init](/boot/loader/heap.md#heap_init)
+* [heap_init()](/boot/loader/heap.md#heap_init)
 * [add_stage2_driver_settings(args)](/boot/loader/load_driver_settings.md#add_stage2_driver_settings)
-* [platform_init_video](/boot/efi/video.md#platform_init_video)
-* [vfs_init](/boot/loader/vfs.md#vfs_init)
+* [platform_init_video()](/boot/efi/video.md#platform_init_video)
+* [vfs_init()](/boot/loader/vfs.md#vfs_init)
+* [BootVolume]
 
 
