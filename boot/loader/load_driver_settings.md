@@ -51,3 +51,6 @@ load_driver_settings(stage2_args* /*args*/, Directory* volume)
 }
 
 ```
+
+* [open_from](/boot/loader/vfs.md#open_from)
+
