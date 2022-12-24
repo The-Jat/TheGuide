@@ -14,3 +14,17 @@ vfs_init(stage2_args *args)
 	return B_OK;
 }
 ```
+
+
+## BootVolume {constructor}
+
+```
+BootVolume::BootVolume()
+	:
+	fRootDirectory(NULL),
+	fSystemDirectory(NULL),
+	fPackageVolumeInfo(NULL),
+	fPackageVolumeState(NULL)
+{
+}
+```
