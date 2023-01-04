@@ -70,6 +70,19 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 
 ## Menu
 
+## menu_type
+
+> Defined in headers/private/kernel/boot/menu.h
+
+```
+enum menu_type {
+	MAIN_MENU = 1,
+	SAFE_MODE_MENU,
+	STANDARD_MENU,
+	CHOICE_MENU,
+};
+```
+
 ## Menu constructor
 
 ```
