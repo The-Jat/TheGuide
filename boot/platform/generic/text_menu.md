@@ -261,3 +261,4 @@ run_menu(Menu* menu)
 ```
 * [draw_menu(menu)](#draw_menu)
 * [make_item_visible(menu, selected)](#make_item_visible)
+* [console_wait_for_key()](/boot/efi/console.md#console_wait_for_key)
