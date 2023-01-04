@@ -69,7 +69,7 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 
 ### working
 + user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
-	+ [Menu](#Menu)* menu = new (std::nothrow) Menu(MAIN_MENU); -> create an object of Menu class.
+	+ [Menu](#MenuConstructor)* menu = new (std::nothrow) Menu(MAIN_MENU); -> create an object of Menu class.
 	+ sMainMenu = menu; 
 	+ sBootVolume = &_bootVolume;
 	+ sPathBlocklist = &_pathBlocklist;
@@ -139,7 +139,7 @@ enum menu_type {
 };
 ```
 
-## Menu constructor
+## Menu constructor {#MenuConstructor}
 
 ```
 Menu::Menu(menu_type type, const char* title)
