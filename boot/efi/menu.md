@@ -49,3 +49,18 @@ platform_add_menus(Menu *menu)
 	}
 }
 ```
+
+
+## platform_run_menu
+
+> arg1 = Menu *menu
+
+```
+void
+platform_run_menu(Menu *menu)
+{
+	platform_generic_run_text_menu(menu);
+}
+```
+
+* platform_generic_run_text_menu(menu)
