@@ -67,6 +67,8 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 }
 ```
 
+### working
++ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ Menu* menu = new (std::nothrow) Menu(MAIN_MENU); -> create an object of Menu class.
 	+ sMainMenu = menu; 
 	+ sBootVolume = &_bootVolume;
