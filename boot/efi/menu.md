@@ -63,4 +63,4 @@ platform_run_menu(Menu *menu)
 }
 ```
 
-* platform_generic_run_text_menu(menu)
+* [platform_generic_run_text_menu(menu)](/boot/platform/generic/text_menu.md#platform_generic_run_text_menu)
