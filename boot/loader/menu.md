@@ -1,4 +1,4 @@
-## menu
+## menu.md
 
 ## user_menu
 
