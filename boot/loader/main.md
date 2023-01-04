@@ -158,7 +158,7 @@ Footer
 * [PathBlocklist()](/boot/loader/PathBlocklist.md#PathBlocklist)
 * [get_boot_file_system(args, bootVolume)](/boot/loader/vfs.md#get_boot_file_system) || [platform_boot_options()](/boot/efi/start.md#platform_boot_options) == BOOT_OPTION_MENU
 
-   * [mount_file_systems(args)](/boot/loader/vfs.md#mount_file_system)
+   * [mount_file_systems(args)](/boot/loader/vfs.md#mount_file_systems)
 
 
 * [load_driver_settings(args, bootVolume.RootDirectory())](/boot/loader/load_driver_settings.md#load_driver_settings)
