@@ -22,6 +22,7 @@ platform_generic_run_text_menu(Menu *menu)
 ## make_item_visible
 
 > arg1 = Menu *menu
+
 > arg2 = int32 selected
 
 ```
