@@ -139,7 +139,7 @@ enum menu_type {
 };
 ```
 
-## Menu constructor {#Menu-Constructor}
+## Menu-Constructor
 
 ```
 Menu::Menu(menu_type type, const char* title)
