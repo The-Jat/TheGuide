@@ -18,6 +18,32 @@ platform_generic_run_text_menu(Menu *menu)
 
 * [run_menu(menu)](#run_menu)
 
+
+## make_item_visible
+
+> arg1 = Menu *menu
+> arg2 = int32 selected
+
+```
+static bool
+make_item_visible(Menu *menu, int32 selected)
+{
+	if (sMenuOffset > selected
+		|| sMenuOffset + menu_height() <= selected) {
+		if (sMenuOffset > selected)
+			sMenuOffset = selected;
+		else
+			sMenuOffset = selected + 1 - menu_height();
+
+		draw_menu(menu);
+		return true;
+	}
+
+	return false;
+}
+
+```
+
 ## draw_menu
 
 > arg1 = Menu *menu
@@ -233,3 +259,4 @@ run_menu(Menu* menu)
 }
 ```
 * [draw_menu(menu)](#draw_menu)
+* [make_item_visible(menu, selected)](#make_item_visible)
