@@ -36,6 +36,49 @@ console_init(void)
 * [console_clear_screen()](/boot/arch/generic/text_console.md#console_clear_screen)
 
 
+## console_wait_for_key
+
+```
+int
+console_wait_for_key(void)
+{
+	size_t index;
+	efi_status status;
+	efi_input_key key;
+	efi_event event = kSystemTable->ConIn->WaitForKey;
+
+	do {
+		kBootServices->WaitForEvent(1, &event, &index);
+		status = kSystemTable->ConIn->ReadKeyStroke(kSystemTable->ConIn, &key);
+	} while (status == EFI_NOT_READY);
+
+	if (key.UnicodeChar > 0)
+		return (int) key.UnicodeChar;
+
+	switch (key.ScanCode) {
+		case SCAN_ESC:
+			return TEXT_CONSOLE_KEY_ESCAPE;
+		case SCAN_UP:
+			return TEXT_CONSOLE_KEY_UP;
+		case SCAN_DOWN:
+			return TEXT_CONSOLE_KEY_DOWN;
+		case SCAN_LEFT:
+			return TEXT_CONSOLE_KEY_LEFT;
+		case SCAN_RIGHT:
+			return TEXT_CONSOLE_KEY_RIGHT;
+		case SCAN_PAGE_UP:
+			return TEXT_CONSOLE_KEY_PAGE_UP;
+		case SCAN_PAGE_DOWN:
+			return TEXT_CONSOLE_KEY_PAGE_DOWN;
+		case SCAN_HOME:
+			return TEXT_CONSOLE_KEY_HOME;
+		case SCAN_END:
+			return TEXT_CONSOLE_KEY_END;
+	}
+	return 0;
+}
+```
+
 ## console_check_boot_keys()
 ```
 
