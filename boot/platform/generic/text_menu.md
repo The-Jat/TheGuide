@@ -232,3 +232,4 @@ run_menu(Menu* menu)
 	menu->Exited();
 }
 ```
+* [draw_menu(menu)](#draw_menu)
