@@ -83,9 +83,9 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ [sBootVolume](#static-variables) = &_bootVolume;
 	+ [sPathBlocklist](#static-variables) = &_pathBlocklist;
 
-	+ Menu* safeModeMenu = NULL;
-	+ Menu* debugMenu = NULL;
-	+ MenuItem* item;
+	+ [Menu](#Menu-Constructor)* safeModeMenu = NULL;
+	+ [Menu](#Menu-Constructor)* debugMenu = NULL;
+	+ [MenuItem](#MenuItem-Constructor)* item;
 	+ TRACE(("user_menu: enter\n"));
 	+ // Add boot volume
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select boot volume",
@@ -167,7 +167,7 @@ Menu::Menu(menu_type type, const char* title)
 
 ## MenuItem
 
-## MenuItem constructor
+## MenuItem-Constructor
 
 ```
 MenuItem::MenuItem(const char *label, Menu *subMenu)
