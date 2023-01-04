@@ -94,7 +94,7 @@ BootVolume::BootVolume()
 }
 ```
 
-## mount_file_system(args) {#mount_file_system}
+## mount_file_systems(args) {#mount_file_systems}
 
 ```
 /** Mounts all file systems recognized on the given device by
