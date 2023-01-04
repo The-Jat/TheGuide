@@ -1,5 +1,14 @@
 ## menu.md
 
+## static-variables
+```
+// only set while in user_menu()
+static Menu* sMainMenu = NULL;
+static Menu* sBlocklistRootMenu = NULL;
+static BootVolume* sBootVolume = NULL;
+static PathBlocklist* sPathBlocklist;
+```
+
 ## user_menu
 
 ```
@@ -70,9 +79,9 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 ### working
 + user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ [Menu](#Menu-Constructor)* menu = new (std::nothrow) Menu(MAIN_MENU); -> create an object of Menu class.
-	+ sMainMenu = menu; 
-	+ sBootVolume = &_bootVolume;
-	+ sPathBlocklist = &_pathBlocklist;
+	+ [sMainMenu](#static-variables) = menu; 
+	+ [sBootVolume](#static-variables) = &_bootVolume;
+	+ [sPathBlocklist](#static-variables) = &_pathBlocklist;
 
 	+ Menu* safeModeMenu = NULL;
 	+ Menu* debugMenu = NULL;
