@@ -88,7 +88,7 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ [MenuItem](#MenuItem-Constructor)* item;
 	+ TRACE(("user_menu: enter\n"));
 	+ // Add boot volume
-	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select boot volume",
+	+ menu->[AddItem](#Menu::AddItem)(item = new(std::nothrow) MenuItem("Select boot volume",
 		add_boot_volume_menu()));
 	+ // Add safe mode
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select safe mode options",
@@ -161,6 +161,18 @@ Menu::Menu(menu_type type, const char* title)
 	fSuperItem(NULL),
 	fShortcuts(NULL)
 {
+}
+```
+
+## Menu::AddItem
+
+```
+void
+Menu::AddItem(MenuItem* item)
+{
+	item->fMenu = this;
+	fItems.Add(item);
+	fCount++;
 }
 ```
 
