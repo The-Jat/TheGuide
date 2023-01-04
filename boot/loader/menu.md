@@ -98,3 +98,41 @@ Menu::Menu(menu_type type, const char* title)
 {
 }
 ```
+
+
+## MenuItem
+
+## MenuItem constructor
+
+```
+MenuItem::MenuItem(const char *label, Menu *subMenu)
+	:
+	fLabel(strdup(label)),
+	fTarget(NULL),
+	fIsMarked(false),
+	fIsSelected(false),
+	fIsEnabled(true),
+	fType(MENU_ITEM_STANDARD),
+	fMenu(NULL),
+	fSubMenu(NULL),
+	fData(NULL),
+	fHelpText(NULL),
+	fShortcut(0)
+{
+	SetSubmenu(subMenu);
+}
+```
+
+## MenuItem::SetSubMenu(Menu)
+
+```
+void
+MenuItem::SetSubmenu(Menu* subMenu)
+{
+	fSubMenu = subMenu;
+
+	if (fSubMenu != NULL)
+		fSubMenu->fSuperItem = this;
+}
+
+```
