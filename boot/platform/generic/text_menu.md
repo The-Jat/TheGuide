@@ -16,7 +16,7 @@ platform_generic_run_text_menu(Menu *menu)
 }
 ```
 
-* run_menu(menu)
+* [run_menu(menu)](#run_menu)
 
 ## draw_menu
 
@@ -86,5 +86,149 @@ draw_menu(Menu *menu)
 		console_set_color(kArrowColor, kBackgroundColor);
 		putchar(31/*25*/);
 	}
+}
+```
+
+## run_menu
+
+> arg1 = Menu* menu
+
+```
+static void
+run_menu(Menu* menu)
+{
+	sMenuOffset = 0;
+	menu->Entered();
+	menu->Show();
+
+	draw_menu(menu);
+
+	// Get selected entry, or select the last one, if there is none
+	int32 selected;
+	MenuItem *item = menu->FindSelected(&selected);
+	if (item == NULL) {
+		selected = 0;
+		item = menu->ItemAt(selected);
+		if (item != NULL)
+			item->Select(true);
+	}
+
+	make_item_visible(menu, selected);
+
+	while (true) {
+		int key = console_wait_for_key();
+
+		item = menu->ItemAt(selected);
+
+		if (TEXT_CONSOLE_IS_CURSOR_KEY(key) || key == 'j' || key == 'J'
+			|| key == 'k' || key == 'K') {
+			if (item == NULL)
+				continue;
+
+			int32 oldSelected = selected;
+
+			switch (key) {
+				case TEXT_CONSOLE_KEY_UP:
+				case 'k':
+				case 'K':
+					selected = select_previous_valid_item(menu, selected - 1);
+					break;
+				case TEXT_CONSOLE_KEY_DOWN:
+				case 'j':
+				case 'J':
+					selected = select_next_valid_item(menu, selected + 1);
+					break;
+				case TEXT_CONSOLE_KEY_PAGE_UP:
+				case TEXT_CONSOLE_KEY_LEFT:
+					selected = select_previous_valid_item(menu,
+						selected - menu_height() + 1);
+					break;
+				case TEXT_CONSOLE_KEY_PAGE_DOWN:
+				case TEXT_CONSOLE_KEY_RIGHT:
+					selected = select_next_valid_item(menu,
+						selected + menu_height() - 1);
+					break;
+				case TEXT_CONSOLE_KEY_HOME:
+					selected = first_selectable_item(menu);
+					break;
+				case TEXT_CONSOLE_KEY_END:
+					selected = last_selectable_item(menu);
+					break;
+			}
+
+			// check if selected has changed
+			if (selected != oldSelected) {
+				MenuItem *item = menu->ItemAt(selected);
+				if (item != NULL)
+					item->Select(true);
+
+				make_item_visible(menu, selected);
+				// make sure that the new selected entry is visible
+				if (sMenuOffset > selected
+					|| sMenuOffset + menu_height() <= selected) {
+					if (sMenuOffset > selected)
+						sMenuOffset = selected;
+					else
+						sMenuOffset = selected + 1 - menu_height();
+
+					draw_menu(menu);
+				}
+			}
+		} else if (key == TEXT_CONSOLE_KEY_RETURN
+			|| key == TEXT_CONSOLE_KEY_SPACE) {
+			if (item != NULL && invoke_item(menu, item, selected, key))
+				break;
+		} else if (key == '\t') {
+			if (item == NULL)
+				continue;
+
+			int32 oldSelected = selected;
+
+			// Use tab to cycle between items (on some platforms, arrow keys
+			// are not available)
+			selected = select_next_valid_item(menu, selected + 1);
+
+			if (selected == oldSelected)
+				selected = first_selectable_item(menu);
+
+			// check if selected has changed
+			if (selected != oldSelected) {
+				MenuItem *item = menu->ItemAt(selected);
+				if (item != NULL)
+					item->Select(true);
+
+				make_item_visible(menu, selected);
+				// make sure that the new selected entry is visible
+				if (sMenuOffset > selected
+					|| sMenuOffset + menu_height() <= selected) {
+					if (sMenuOffset > selected)
+						sMenuOffset = selected;
+					else
+						sMenuOffset = selected + 1 - menu_height();
+
+					draw_menu(menu);
+				}
+			}
+		} else if (key == TEXT_CONSOLE_KEY_ESCAPE
+			&& menu->Type() != MAIN_MENU) {
+			// escape key was hit
+			break;
+		} else {
+			// Shortcut processing
+			shortcut_hook function = menu->FindShortcut(key);
+			if (function != NULL)
+				function(key);
+			else {
+				item = menu->FindItemByShortcut(key);
+				if (item != NULL && invoke_item(menu, item, selected,
+						TEXT_CONSOLE_KEY_RETURN)) {
+					break;
+				}
+			}
+		}
+	}
+
+	menu->Hide();
+	menu->Exited();
 }
 ```
