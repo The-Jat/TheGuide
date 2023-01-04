@@ -66,3 +66,22 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	return B_OK;
 }
 ```
+
+
+## Menu
+
+## Menu constructor
+
+```
+Menu::Menu(menu_type type, const char* title)
+	:
+	fTitle(title),
+	fChoiceText(NULL),
+	fCount(0),
+	fIsHidden(true),
+	fType(type),
+	fSuperItem(NULL),
+	fShortcuts(NULL)
+{
+}
+```
