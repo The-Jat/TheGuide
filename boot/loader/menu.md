@@ -115,7 +115,7 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ } else
 		+ item->SetShortcut('b');
 
-	+ menu->Run();
+	+ [menu->Run();](#Menu-Run)
 
 	+ apply_safe_mode_options(safeModeMenu);
 	+ apply_safe_mode_options(debugMenu);
@@ -173,6 +173,16 @@ Menu::AddItem(MenuItem* item)
 	item->fMenu = this;
 	fItems.Add(item);
 	fCount++;
+}
+```
+
+## Menu-Run
+
+```
+void
+Menu::Run()
+{
+	platform_run_menu(this);
 }
 ```
 
