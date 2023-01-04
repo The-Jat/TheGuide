@@ -185,6 +185,7 @@ Menu::Run()
 	platform_run_menu(this);
 }
 ```
++ [platform_run_menu(this)](/boot/efi/menu.md#platform_run_menu)
 
 
 ## MenuItem
