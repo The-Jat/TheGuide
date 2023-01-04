@@ -99,7 +99,7 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 		debugMenu = add_debug_menu()));
 
 	+ // Add platform dependent menus
-	+ platform_add_menus(menu);
+	+ [platform_add_menus(menu);](/boot/efi/menu.md#platform_add_menus)
 
 	+ menu->AddSeparatorItem();
 
