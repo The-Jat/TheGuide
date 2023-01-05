@@ -90,6 +90,11 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ // Add boot volume
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select boot volume",
 		add_boot_volume_menu())); // [AddItem](#Menu-AddItem), [MenuItem Constructor](#MenuItem-Constructor)
+		
+		AddItem accepts MenuItem object, MenuItem constructor accept label name and Menu ptr which is returned by add_boot_volume_menu.
+		
+		[add_boot_volume_menu](#add_boot_volume_menu)
+		
 	+ // Add safe mode
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select safe mode options",
 		safeModeMenu = add_safe_mode_menu()));
@@ -223,4 +228,60 @@ MenuItem::SetSubmenu(Menu* subMenu)
 		fSubMenu->fSuperItem = this;
 }
 
+```
+
+## add_boot_volume_menu
+
+> return = Menu* {Menu ptr.}
+
+```
+static Menu*
+add_boot_volume_menu()
+{
+	Menu* menu = new(std::nothrow) Menu(CHOICE_MENU, "Select Boot Volume");
+	MenuItem* item;
+	void* cookie;
+	int32 count = 0;
+
+	if (gRoot->Open(&cookie, O_RDONLY) == B_OK) {
+		Directory* volume;
+		while (gRoot->GetNextNode(cookie, (Node**)&volume) == B_OK) {
+			// only list bootable volumes
+			if (volume != sBootVolume->RootDirectory() && !is_bootable(volume))
+				continue;
+
+			char name[B_FILE_NAME_LENGTH];
+			if (volume->GetName(name, sizeof(name)) == B_OK) {
+				add_boot_volume_item(menu, volume, name);
+
+				count++;
+			}
+		}
+		gRoot->Close(cookie);
+	}
+
+	if (count == 0) {
+		// no boot volume found yet
+		menu->AddItem(item = new(nothrow) MenuItem("<No boot volume found>"));
+		item->SetType(MENU_ITEM_NO_CHOICE);
+		item->SetEnabled(false);
+	}
+
+	menu->AddSeparatorItem();
+
+	menu->AddItem(item = new(nothrow) MenuItem("Rescan volumes"));
+	item->SetHelpText("Please insert a Haiku CD-ROM or attach a USB disk - "
+		"depending on your system, you can then boot from there.");
+	item->SetType(MENU_ITEM_NO_CHOICE);
+	if (count == 0)
+		item->Select(true);
+
+	menu->AddItem(item = new(nothrow) MenuItem("Return to main menu"));
+	item->SetType(MENU_ITEM_NO_CHOICE);
+
+	if (gBootVolume.GetBool(BOOT_VOLUME_BOOTED_FROM_IMAGE, false))
+		menu->SetChoiceText("CD-ROM or hard drive");
+
+	return menu;
+}
 ```
