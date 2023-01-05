@@ -89,7 +89,7 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 	+ TRACE(("user_menu: enter\n"));	// for the logging purpose.
 	+ // Add boot volume
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select boot volume",
-		add_boot_volume_menu())); // [AddItem](#Menu-AddItem)
+		add_boot_volume_menu())); // [AddItem](#Menu-AddItem), [MenuItem Constructor](#MenuItem-Constructor)
 	+ // Add safe mode
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select safe mode options",
 		safeModeMenu = add_safe_mode_menu()));
