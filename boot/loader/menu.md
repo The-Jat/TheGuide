@@ -78,15 +78,15 @@ user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
 
 ### working
 + user_menu(BootVolume& _bootVolume, PathBlocklist& _pathBlocklist)
-	+ [Menu](#Menu-Constructor)* menu = new (std::nothrow) Menu(MAIN_MENU); -> create an object of Menu class.
-	+ [sMainMenu](#static-variables) = menu; 
-	+ [sBootVolume](#static-variables) = &_bootVolume;
-	+ [sPathBlocklist](#static-variables) = &_pathBlocklist;
+	+ [Menu](#Menu-Constructor)* menu = new (std::nothrow) Menu(MAIN_MENU);	// create an object of Menu class.
+	+ [sMainMenu](#static-variables) = menu; 	// set the sMainMenu ptr of Menu to the menu ptr.
+	+ [sBootVolume](#static-variables) = &_bootVolume;	// set the sBootVolume ptr of BootVolume to the received _bootVolume address.
+	+ [sPathBlocklist](#static-variables) = &_pathBlocklist;	// set the sPathBlockList ptr of PathBlockList to the received _pathBlockList.
 
-	+ [Menu](#Menu-Constructor)* safeModeMenu = NULL;
-	+ [Menu](#Menu-Constructor)* debugMenu = NULL;
-	+ [MenuItem](#MenuItem-Constructor)* item;
-	+ TRACE(("user_menu: enter\n"));
+	+ [Menu](#Menu-Constructor)* safeModeMenu = NULL;	// create a menu ptr and set to NULL, it is not pointing to anything.
+	+ [Menu](#Menu-Constructor)* debugMenu = NULL;	// create a menu ptr and set to NULL.
+	+ [MenuItem](#MenuItem-Constructor)* item;	// create an ptr to MenuItem.
+	+ TRACE(("user_menu: enter\n"));	// for the logging purpose.
 	+ // Add boot volume
 	+ menu->AddItem(item = new(std::nothrow) MenuItem("Select boot volume",
 		add_boot_volume_menu())); // [AddItem](#Menu-AddItem)
