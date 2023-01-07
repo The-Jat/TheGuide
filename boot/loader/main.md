@@ -154,7 +154,9 @@ Footer
 * [add_stage2_driver_settings(args)](/boot/loader/load_driver_settings.md#add_stage2_driver_settings)
 * [platform_init_video()](/boot/efi/video.md#platform_init_video)
 * [vfs_init()](/boot/loader/vfs.md#vfs_init)
-* [BootVolume()](/boot/loader/vfs.md#BootVolume)
+* bool mountedAllVolumes = false;
+* [BootVolume](/boot/loader/vfs.md#BootVolume) bootVolume; // BootVolume object.
+* PathBlocklist pathBlocklist;
 * [PathBlocklist()](/boot/loader/PathBlocklist.md#PathBlocklist)
 * [get_boot_file_system(args, bootVolume)](/boot/loader/vfs.md#get_boot_file_system) || [platform_boot_options()](/boot/efi/start.md#platform_boot_options) == BOOT_OPTION_MENU
 
