@@ -156,8 +156,7 @@ Footer
 * [vfs_init()](/boot/loader/vfs.md#vfs_init)
 * bool mountedAllVolumes = false;
 * [BootVolume](/boot/loader/vfs.md#BootVolume) bootVolume; // BootVolume object.
-* PathBlocklist pathBlocklist;
-* [PathBlocklist()](/boot/loader/PathBlocklist.md#PathBlocklist)
+* [PathBlocklist](/boot/loader/PathBlocklist.md#PathBlocklist) pathBlocklist;	// PathBlocklist object.
 * [get_boot_file_system(args, bootVolume)](/boot/loader/vfs.md#get_boot_file_system) || [platform_boot_options()](/boot/efi/start.md#platform_boot_options) == BOOT_OPTION_MENU
 
    * [mount_file_systems(args)](/boot/loader/vfs.md#mount_file_systems)
