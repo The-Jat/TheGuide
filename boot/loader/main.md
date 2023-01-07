@@ -159,7 +159,7 @@ Footer
 * [PathBlocklist](/boot/loader/PathBlocklist.md#PathBlocklist) pathBlocklist;	// PathBlocklist object.
 * [get_boot_file_system(args, bootVolume)](/boot/loader/vfs.md#get_boot_file_system) || [platform_boot_options()](/boot/efi/start.md#platform_boot_options) == BOOT_OPTION_MENU
 
-   * [mount_file_systems(args)](/boot/loader/vfs.md#mount_file_systems)
+   * [mount_file_systems(args)](/boot/loader/vfs.md#mount_file_systems(args))
    * [user_menu(bootVolume, pathBlocklist)](/boot/loader/menu.md#user_menu)
 
 
