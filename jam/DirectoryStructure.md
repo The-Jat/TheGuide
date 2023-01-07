@@ -8,3 +8,6 @@
 * MaK = added by me
 * system
 * Trash 
+
+
+1. [Creating empty directories](/jam/CreateDir.md#CreateEmptyDirectory)
