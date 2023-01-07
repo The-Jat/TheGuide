@@ -182,11 +182,11 @@ mount_file_systems(stage2_args *args)
 
 ## open_from
 
-> arg1 = (Directory)[] *directory
+> arg1 = [Directory]() *directory
 
 > arg2 = const char *name
 
-> arg3 = (mode_t)[] permissions
+> arg3 = [mode_t]() permissions
 
 ```
 int
@@ -269,7 +269,7 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 }
 ```
 
-+ (get_node_for_path)[#get_node_for_path]
++ [get_node_for_path](#get_node_for_path)
 
 
 ## get_node_for_path
