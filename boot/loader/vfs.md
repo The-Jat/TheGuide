@@ -268,3 +268,63 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 	return fd;
 }
 ```
+
++ (get_node_for_path)[#get_node_for_path]
+
+
+## get_node_for_path
+
+> arg1 = Directory *directory
+
+> arg2 = char *path
+
+> arg3 = Node **_node
+
+```
+/*!	Resolves \a directory + \a path to a node.
+	Note that \a path will be modified by the function.
+*/
+static status_t
+get_node_for_path(Directory *directory, char *path, Node **_node)
+{
+	directory->Acquire();
+		// balance Acquire()/Release() calls
+
+	while (true) {
+		Node *nextNode;
+		char *nextPath;
+
+		// walk to find the next path component ("path" will point to a single
+		// path component), and filter out multiple slashes
+		for (nextPath = path + 1; nextPath[0] != '\0' && nextPath[0] != '/'; nextPath++);
+
+		if (*nextPath == '/') {
+			*nextPath = '\0';
+			do
+				nextPath++;
+			while (*nextPath == '/');
+		}
+
+		nextNode = directory->Lookup(path, true);
+		directory->Release();
+
+		if (nextNode == NULL)
+			return B_ENTRY_NOT_FOUND;
+
+		path = nextPath;
+		if (S_ISDIR(nextNode->Type()))
+			directory = (Directory *)nextNode;
+		else if (path[0])
+			return B_NOT_ALLOWED;
+
+		// are we done?
+		if (path[0] == '\0') {
+			*_node = nextNode;
+			return B_OK;
+		}
+	}
+
+	return B_ENTRY_NOT_FOUND;
+}
+
+```
