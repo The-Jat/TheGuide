@@ -19,6 +19,9 @@ add_stage2_driver_settings(stage2_args* args)
 
 ## load_driver_settings
 
+> arg1 = stage2_args*
+> arg2 = Directory* volume
+
 ```
 
 status_t
