@@ -94,7 +94,9 @@ BootVolume::BootVolume()
 }
 ```
 
-## mount_file_systems(args)
+## mount_file_systems
+
+> arg1 = stage2_args *args
 
 ```
 /** Mounts all file systems recognized on the given device by
