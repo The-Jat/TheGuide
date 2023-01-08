@@ -19,6 +19,7 @@ add_stage2_driver_settings(stage2_args* args)
 	return B_OK;
 }
 ```
+It does not do anything in x86.
 
 
 ## load_driver_settings
