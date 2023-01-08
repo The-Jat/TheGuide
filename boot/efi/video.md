@@ -1,5 +1,7 @@
 ## video
 
+> location = src/system/boot/platform/efi/video.cpp
+
 ## platform_init_video
 
 ```
