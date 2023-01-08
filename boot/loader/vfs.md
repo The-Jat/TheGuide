@@ -78,6 +78,7 @@ get_boot_file_system(stage2_args* args, BootVolume& _bootVolume)
 
 ```
 * [platform_add_boot_device](/boot/efi/devices.md#platform_add_boot_device)
+* error = _bootVolume.[SetTo](#BootVolume::SetTo)(fileSystem);
 
 
 
@@ -93,6 +94,27 @@ BootVolume::BootVolume()
 {
 }
 ```
+
+## BootVolume::SetTo
+
+```
+status_t
+BootVolume::SetTo(Directory* rootDirectory,
+	PackageVolumeInfo* packageVolumeInfo,
+	PackageVolumeState* packageVolumeState)
+{
+	Unset();
+
+	status_t error = _SetTo(rootDirectory, packageVolumeInfo,
+		packageVolumeState);
+	if (error != B_OK)
+		Unset();
+
+	return error;
+}
+
+```
+
 
 ## mount_file_systems
 
