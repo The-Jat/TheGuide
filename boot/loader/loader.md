@@ -27,6 +27,7 @@ find_kernel(BootVolume& volume, const char** name = NULL)
 }
 ```
 
+
 ## load_kernel
 
 > arg1 = stage2_args* args
