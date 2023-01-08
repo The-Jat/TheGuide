@@ -56,8 +56,8 @@ heap_init(stage2_args* args)
 	if (platform_init_heap(args, &base, &top) < B_OK)
 		return B_ERROR;
 
-	sHeapBase = base;	// sHeapBase is the static global variable which points to start of the heap
-	sHeapEnd = top;		// sHeapEnd is the static global variable which points to top of the heap
+	sHeapBase = base;
+	sHeapEnd = top;
 	sMaxHeapSize = (uint8*)top - (uint8*)base;
 
 	// declare the whole heap as one chunk, and add it
@@ -84,9 +84,9 @@ heap_init(stage2_args* args)
 * void* top;
 * if ([platform_init_heap(args, &base, &top)](/boot/efi/heap.md#platform_init_heap)) < B_OK)
 	return B_ERROR;
-* sHeapBase = base;
-* sHeapEnd = top;
-* sMaxHeapSize = (uint8*)top - (uint8*)base;
+* sHeapBase = base;	// sHeapBase is the static global variable which points to start of the heap
+* sHeapEnd = top;	// sHeapEnd is the static global variable which points to top of the heap
+* sMaxHeapSize = (uint8*)top - (uint8*)base;	// sMaxHeapSize static variable which is the size of heap
 
 * // declare the whole heap as one chunk, and add it
 * // to the free list
