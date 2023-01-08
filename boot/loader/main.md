@@ -171,3 +171,8 @@ Footer
 	* [load_driver_settings(args, bootVolume.RootDirectory())](/boot/loader/load_driver_settings.md#load_driver_settings)
 	* #endif
 
+	* status_t status;
+	* while ((status = [load_kernel]()(args, bootVolume)) < B_OK) {
+
+
+
