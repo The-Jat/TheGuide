@@ -72,3 +72,4 @@ load_kernel(stage2_args* args, BootVolume& volume)
 ```
 
 * int fd = [find_kernel](#find_kernel)(volume, &name);
+* [elf_init();](/boot/loader/elf.md#elf_init())
