@@ -2,6 +2,7 @@
 
 ## main()
 
+> arg1 = [stage2_args](/boot/structure/stage2_args.md) *args
 
 ```
 
