@@ -172,7 +172,7 @@ Footer
 	* #endif
 
 	* status_t status;
-	* while ((status = [load_kernel]()(args, bootVolume)) < B_OK) {
+	* while ((status = [load_kernel](/boot/loader/loader.md#load_kernel)(args, bootVolume)) < B_OK) {
 
 
 
