@@ -163,6 +163,11 @@ Footer
    * [mount_file_systems(args)](/boot/loader/vfs.md#mount_file_systems)
    * [user_menu(bootVolume, pathBlocklist)](/boot/loader/menu.md#user_menu)
 
+* if (bootVolume.IsValid()) {
+	* // we got a volume to boot from!
 
-* [load_driver_settings(args, bootVolume.RootDirectory())](/boot/loader/load_driver_settings.md#load_driver_settings)
+	* // TODO: fix for riscv64
+	* #ifndef __riscv
+	* [load_driver_settings(args, bootVolume.RootDirectory())](/boot/loader/load_driver_settings.md#load_driver_settings)
+	* #endif
 
