@@ -1,6 +1,10 @@
 ## load driver settings
 
+> location = src/system/boot/loader/load_driver_settings.cpp
+
 ## add_stage2_driver_settings(stage2_args* args)
+
+> arg1 = [stage2_args](/boot/structure/stage2_args.md)* args
 
 ```
 status_t
