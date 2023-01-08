@@ -80,7 +80,6 @@ heap_init(stage2_args* args)
 
 ```
 
-* [platform_init_heap(args, &base, &top)](/boot/efi/heap.md#platform_init_heap)
 * void* base;
 * void* top;
 * if ([platform_init_heap(args, &base, &top)](/boot/efi/heap.md#platform_init_heap)) < B_OK)
