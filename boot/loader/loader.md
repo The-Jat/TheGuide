@@ -2,7 +2,36 @@
 ## loader
 > location = src/system/boot/loader/loader.cpp
 
+
+## find_kernel
+
+> arg1 = BootVolume& volume
+
+> arg2 = const char** name = NULL
+
+```
+static int
+find_kernel(BootVolume& volume, const char** name = NULL)
+{
+	for (int32 i = 0; sKernelPaths[i][0] != NULL; i++) {
+		int fd = open_maybe_packaged(volume, sKernelPaths[i][0], O_RDONLY);
+		if (fd >= 0) {
+			if (name)
+				*name = sKernelPaths[i][1];
+
+			return fd;
+		}
+	}
+
+	return B_ENTRY_NOT_FOUND;
+}
+```
+
 ## load_kernel
+
+> arg1 = stage2_args* args
+
+> BootVolume& volume
 
 ```
 status_t
@@ -40,3 +69,5 @@ load_kernel(stage2_args* args, BootVolume& volume)
 }
 
 ```
+
+* int fd = [find_kernel](#find_kernel)(volume, &name);
