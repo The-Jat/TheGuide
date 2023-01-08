@@ -91,3 +91,5 @@ platform_init_video(void)
 }
 
 ```
+
+It looks for the best graphics mode and store the information in gKernelArgs
