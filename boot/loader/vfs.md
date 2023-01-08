@@ -78,7 +78,7 @@ get_boot_file_system(stage2_args* args, BootVolume& _bootVolume)
 
 ```
 * [platform_add_boot_device](/boot/efi/devices.md#platform_add_boot_device)
-* [SetTo](#BootVolume::SetTo)
+* error = _bootVolume.SetTo(fileSystem);	// [SetTo](#SetTo)
 
 
 
@@ -95,7 +95,7 @@ BootVolume::BootVolume()
 }
 ```
 
-## BootVolume::SetTo
+## SetTo
 
 ```
 status_t
