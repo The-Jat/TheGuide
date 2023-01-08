@@ -116,6 +116,79 @@ BootVolume::SetTo(Directory* rootDirectory,
 
 ```
 
+* status_t error = [_SetTo](#_SetTo)(rootDirectory, packageVolumeInfo, packageVolumeState);
+
+## _SetTo
+## BootVolume::_SetTo
+
+```
+status_t
+BootVolume::_SetTo(Directory* rootDirectory,
+	PackageVolumeInfo* packageVolumeInfo,
+	PackageVolumeState* packageVolumeState)
+{
+	Unset();
+
+	if (rootDirectory == NULL)
+		return B_BAD_VALUE;
+
+	fRootDirectory = rootDirectory;
+	fRootDirectory->Acquire();
+
+	// find the system directory
+	Node* systemNode = fRootDirectory->Lookup("system", true);
+	if (systemNode == NULL || !S_ISDIR(systemNode->Type())) {
+		if (systemNode != NULL)
+			systemNode->Release();
+		Unset();
+		return B_ENTRY_NOT_FOUND;
+	}
+
+	fSystemDirectory = static_cast<Directory*>(systemNode);
+
+	if (packageVolumeInfo == NULL) {
+		// get a package volume info
+		BReference<PackageVolumeInfo> packageVolumeInfoReference(
+			new(std::nothrow) PackageVolumeInfo);
+		status_t error = packageVolumeInfoReference->SetTo(fSystemDirectory,
+			"packages");
+		if (error != B_OK) {
+			// apparently not packaged
+			return B_OK;
+		}
+
+		fPackageVolumeInfo = packageVolumeInfoReference.Detach();
+	} else {
+		fPackageVolumeInfo = packageVolumeInfo;
+		fPackageVolumeInfo->AcquireReference();
+	}
+
+	fPackageVolumeState = packageVolumeState != NULL
+		? packageVolumeState : fPackageVolumeInfo->States().Head();
+
+	// try opening the system package
+	int packageFD = _OpenSystemPackage();
+	if (packageFD < 0)
+		return packageFD;
+
+	// mount packagefs
+	Directory* packageRootDirectory;
+	status_t error = packagefs_mount_file(packageFD, fSystemDirectory,
+		packageRootDirectory);
+	close(packageFD);
+	if (error != B_OK) {
+		Unset();
+		return error;
+	}
+
+	fSystemDirectory->Release();
+	fSystemDirectory = packageRootDirectory;
+
+	return B_OK;
+}
+
+```
+
 
 ## mount_file_systems
 
