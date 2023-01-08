@@ -96,6 +96,7 @@ BootVolume::BootVolume()
 ```
 
 ## SetTo
+## BootVolume::SetTo
 
 ```
 status_t
