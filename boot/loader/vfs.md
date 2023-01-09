@@ -390,21 +390,23 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 	return fd;
 }
 ```
-
-+ [get_node_for_path](#get_node_for_path)
-+ 	if (name[0] == '/') {
++ int
++ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
++ {
+	+ if (name[0] == '/') {
+		+ // if the path`s first path contains the '/' then start from the root.
 		+ // ignore the directory and start from root if we are asked to do that
-		+ directory = gRoot;
+		+ directory = gRoot;	// let the directory to point to root.
 		+ name++;
-	+}
+	+ }
 
-	+ char* path = (char*)malloc(B_PATH_NAME_LENGTH);
-	+ if (path == NULL)
-		+ return B_NO_MEMORY;
+	+ char* path = (char*)malloc(B_PATH_NAME_LENGTH);	// reserve some space for the path string.
+	+ if (path == NULL)	// if path is not reserved.
+		+ return B_NO_MEMORY;	// just return from this function error.
 
-	+ if (strlcpy(path, name, B_PATH_NAME_LENGTH) >= B_PATH_NAME_LENGTH) {
-		+ free(path);
-		+ return B_NAME_TOO_LONG;
+	+ if (strlcpy(path, name, B_PATH_NAME_LENGTH) >= B_PATH_NAME_LENGTH) {	// copy the received path to the above created string path.
+		+ free(path);	// free the allocated path
+		+ return B_NAME_TOO_LONG;	// return from the function error
 	+ }
 
 	+ Node *node;
@@ -466,7 +468,7 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 	+ node->Release();
 	+ free(path);
 	+ return fd;
-
++ }
 
 ## get_node_for_path
 
