@@ -62,5 +62,5 @@ load_driver_settings(stage2_args* /*args*/, Directory* volume)
 ```
 
 * [open_from](/boot/loader/vfs.md#open_from)
-* Directory* settings = (Directory*)[get_node_from](#get_node_from)(fd);
+* Directory* settings = (Directory*)[get_node_from](vfs.md#get_node_from)(fd);
 
