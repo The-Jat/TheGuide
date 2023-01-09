@@ -527,6 +527,52 @@ get_node_for_path(Directory *directory, char *path, Node **_node)
 
 ```
 
+	+ static status_t
+	+ get_node_for_path(Directory *directory, char *path, Node **_node)
+	+ {// path = system/mak/neural
+		+ directory->Acquire();
+		+ // balance Acquire()/Release() calls
+
+		+ while (true) {
+			+ Node *nextNode;
+			+ char *nextPath;
+
+			+ // walk to find the next path component ("path" will point to a single
+			+ // path component), and filter out multiple slashes
+			+ for (nextPath = path + 1; nextPath[0] != '\0' && nextPath[0] != '/'; nextPath++);
+				// at this point nextPath = /mak/neural
+				
+			// this condition truncate the '/' from the nextPath.
+			+ if (*nextPath == '/') {
+				+ *nextPath = '\0';
+				+ do
+					+ nextPath++;
+				+ while (*nextPath == '/');
+			+ }
+			// after nextPath = mak/neural/
+
+			+ nextNode = directory->Lookup(path, true);
+			+ directory->Release();
+
+			+ if (nextNode == NULL)
+				+ return B_ENTRY_NOT_FOUND;
+
+		path = nextPath;
+		if (S_ISDIR(nextNode->Type()))
+			directory = (Directory *)nextNode;
+		else if (path[0])
+			return B_NOT_ALLOWED;
+
+		// are we done?
+		if (path[0] == '\0') {
+			*_node = nextNode;
+			return B_OK;
+		}
+	}
+
+	return B_ENTRY_NOT_FOUND;
+}
+
 
 ## get_node_from
 
