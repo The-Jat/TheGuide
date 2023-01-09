@@ -424,3 +424,26 @@ get_node_for_path(Directory *directory, char *path, Node **_node)
 }
 
 ```
+
+
+## get_node_from
+
+> arg1 = int fd
+
+```
+
+/** Since we don't have directory functions yet, this
+ *	function is needed to get the contents of a directory.
+ *	It should be removed once readdir() & co. are in place.
+ */
+
+Node *
+get_node_from(int fd)
+{
+	Descriptor *descriptor = get_descriptor(fd);
+	if (descriptor == NULL)
+		return NULL;
+
+	return descriptor->GetNode();
+}
+```
