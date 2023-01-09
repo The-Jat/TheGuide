@@ -1,5 +1,31 @@
 ## vfs
 
+## Node instructor
+## Node()
+
+```
+Node::Node()
+	:
+	fRefCount(1)
+{
+}
+```
+
+## DirectoryConstructor
+## Directory ()
+
+> Inherited from [Node](#NodeConstructor)
+
+```
+
+Directory::Directory()
+	: Node()
+{
+}
+
+```
+* [Node()](#NodeConstructor) constructor
+
 ## vfs_init(stage2_args *args)
 
 
