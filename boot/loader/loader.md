@@ -3,6 +3,25 @@
 > location = src/system/boot/loader/loader.cpp
 
 
+## open_maybe_packaged
+
+```
+int
+open_maybe_packaged(BootVolume& volume, const char* path, int openMode)
+{
+	if (strncmp(path, kSystemDirectoryPrefix, strlen(kSystemDirectoryPrefix))
+			== 0) {
+		path += strlen(kSystemDirectoryPrefix);
+		return open_from(volume.SystemDirectory(), path, openMode);
+	}
+
+        return open_from(volume.RootDirectory(), path, openMode);
+}
+```
+
+* [open_from](/boot/loader/vfs.md#open_from)
+
+
 ## find_kernel
 
 > arg1 = BootVolume& volume
@@ -26,6 +45,8 @@ find_kernel(BootVolume& volume, const char** name = NULL)
 	return B_ENTRY_NOT_FOUND;
 }
 ```
+
+* int fd = [open_maybe_packaged](#open_maybe_packaged)(volume, sKernelPaths[i][0], O_RDONLY);
 
 
 ## load_kernel
