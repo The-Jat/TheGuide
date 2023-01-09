@@ -553,6 +553,7 @@ This function checks if the directory exits and if exits.
 			+ }
 			// after nextPath = mak/neural/
 
+			// here path is = system
 			+ nextNode = directory->Lookup(path, true);
 			+ directory->Release();
 
