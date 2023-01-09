@@ -65,6 +65,7 @@ load_driver_settings(stage2_args* /*args*/, Directory* volume)
 * if (fd < B_OK)
 	* return fd;
 
+
 * Directory* settings = (Directory*)[get_node_from](vfs.md#get_node_from)(fd);
 * if (settings == NULL)
 	* return B_ENTRY_NOT_FOUND;
