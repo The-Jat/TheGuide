@@ -408,7 +408,7 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 	+ }
 
 	+ Node *node;
-	+ status_t error = [get_node_for_path]](#get_node_for_path)(directory, path, &node);
+	+ status_t error = [get_node_for_path](#get_node_for_path)(directory, path, &node);
 	+ if (error != B_OK) {
 		+ if (error != B_ENTRY_NOT_FOUND) {
 			+ free(path);
