@@ -1,6 +1,6 @@
 ## vfs
 
-## Node instructor
+## NodeConstructor
 ## Node()
 
 ```
