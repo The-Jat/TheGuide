@@ -529,7 +529,7 @@ get_node_for_path(Directory *directory, char *path, Node **_node)
 This function checks if the directory exits and if exits.
 
 
-	+ static status_t
++ static status_t
 	+ get_node_for_path(Directory *directory, char *path, Node **_node)
 	+ {// path = system/mak/neural
 		+ directory->Acquire();
