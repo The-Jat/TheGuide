@@ -394,7 +394,7 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 + open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 + {
 	+ if (name[0] == '/') {
-		+ // if the path`s first path contains the '/' then start from the root.
+		+ // if the received path`s first letter is '/' then start from the root.
 		+ // ignore the directory and start from root if we are asked to do that
 		+ directory = gRoot;	// let the directory to point to root.
 		+ name++;
