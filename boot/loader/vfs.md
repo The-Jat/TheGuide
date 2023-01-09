@@ -26,6 +26,49 @@ Directory::Directory()
 ```
 * [Node()](#NodeConstructor) constructor
 
+## Lookup
+
+> arg1 = const char* name
+
+> arg2 = bool traverseLinks
+
+> return [Node](#NodeConstructor)*
+
+```
+Node*
+Directory::Lookup(const char* name, bool traverseLinks)
+{
+	Node* node = LookupDontTraverse(name);
+	if (node == NULL)
+		return NULL;
+
+	if (!traverseLinks || !S_ISLNK(node->Type()))
+		return node;
+
+	// the node is a symbolic link, so we have to resolve the path
+	char linkPath[B_PATH_NAME_LENGTH];
+	status_t error = node->ReadLink(linkPath, sizeof(linkPath));
+
+	node->Release();
+		// we don't need this one anymore
+
+	if (error != B_OK)
+		return NULL;
+
+	// let open_from() do the real work
+	int fd = open_from(this, linkPath, O_RDONLY);
+	if (fd < 0)
+		return NULL;
+
+	node = get_node_from(fd);
+	if (node != NULL)
+		node->Acquire();
+
+	close(fd);
+	return node;
+}
+```
+
 ## vfs_init(stage2_args *args)
 
 
