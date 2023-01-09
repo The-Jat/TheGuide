@@ -392,6 +392,80 @@ open_from(Directory *directory, const char *name, int mode, mode_t permissions)
 ```
 
 + [get_node_for_path](#get_node_for_path)
++ 	if (name[0] == '/') {
+		+ // ignore the directory and start from root if we are asked to do that
+		+ directory = gRoot;
+		+ name++;
+	+}
+
+	+ char* path = (char*)malloc(B_PATH_NAME_LENGTH);
+	+ if (path == NULL)
+		+ return B_NO_MEMORY;
+
+	+ if (strlcpy(path, name, B_PATH_NAME_LENGTH) >= B_PATH_NAME_LENGTH) {
+		+ free(path);
+		+ return B_NAME_TOO_LONG;
+	+ }
+
+	+ Node *node;
+	+ status_t error = [get_node_for_path]](#get_node_for_path)(directory, path, &node);
+	+ if (error != B_OK) {
+		+ if (error != B_ENTRY_NOT_FOUND) {
+			+ free(path);
+			+ return error;
+		+ }
+
+		+ if ((mode & O_CREAT) == 0) {
+			+ free(path);
+			+ return B_ENTRY_NOT_FOUND;
+		+ }
+
+		+ // try to resolve the parent directory
+		+ strlcpy(path, name, B_PATH_NAME_LENGTH);
+		+ if (char* lastSlash = strrchr(path, '/')) {
+			+ if (lastSlash[1] == '\0') {
+				+ free(path);
+				+ return B_ENTRY_NOT_FOUND;
+			+ }
+
+			+ *lastSlash = '\0';
+			+ name = lastSlash + 1;
+
+			+ // resolve the directory
+			+ if (get_node_for_path(directory, path, &node) != B_OK) {
+				+ free(path);
+				+ return B_ENTRY_NOT_FOUND;
+			+ }
+
+			+ if (node->Type() != S_IFDIR) {
+				+ node->Release();
+				+ free(path);
+				+ return B_NOT_A_DIRECTORY;
+			+ }
+
+			+ directory = static_cast<Directory*>(node);
+		+ } else
+			+ directory->Acquire();
+
+		+ // create the file
+		+ error = directory->CreateFile(name, permissions, &node);
+		+ directory->Release();
+
+		+ if (error != B_OK) {
+			+ free(path);
+			+ return error;
+		+ }
+	+ } else if ((mode & O_EXCL) != 0) {
+		+ node->Release();
+		+ free(path);
+		+ return B_FILE_EXISTS;
+	+ }
+
+	+ int fd = open_node(node, mode);
+
+	+ node->Release();
+	+ free(path);
+	+ return fd;
 
 
 ## get_node_for_path
