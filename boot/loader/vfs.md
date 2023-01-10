@@ -70,8 +70,11 @@ Directory::Lookup(const char* name, bool traverseLinks)
 ```
 * Node*
 * Directory::Lookup(const char* name, bool traverseLinks)
-* {
-* Node* node = LookupDontTraverse(name);	// LookupDontTraverse is defined in the filesytem files. src/system/boot/loader/file_systems/bfs/Directory.cpp
+* {	// name = system
+* 	// traverseLinks = true
+
+* // LookupDontTraverse returns the node of that path.
+* [Node](#NodeConstructor)* node = LookupDontTraverse(name);	// LookupDontTraverse is defined in the filesytem files. src/system/boot/loader/file_systems/bfs/Directory.cpp
 * if (node == NULL)	// if that node is not existed in the filesytem
 	* return NULL;
 
