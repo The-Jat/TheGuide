@@ -628,10 +628,10 @@ This function checks if the directory exits and if exits.
 					+ nextPath++;
 				+ while (*nextPath == '/');
 			+ }
-			// after nextPath = mak/neural/
+			// now, nextPath = mak/neural/
 
 			// here path is = system
-			+ nextNode = directory->Lookup(path, true);
+			+ nextNode = directory->[Lookup](#Lookup)(path, true);
 			+ directory->Release();
 
 			+ if (nextNode == NULL)
